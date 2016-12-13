@@ -34,20 +34,33 @@ class ReverseWord
     public static void printReversedWords(String sentence) {
         String[] words = sentence.split(" +");
         String newSentence = "";
+	    String newSentence2 = "";
+
         StringBuffer wordBuffer;
         for(int i = 0; i < words.length; ++i) {
             newSentence += reverseWord(words[i]) + " ";
-
+	        newSentence2 += reverseWordPrimitive(words[i]) + " ";
         }
         newSentence.trim();
+        newSentence2.trim();
         System.out.println(newSentence);
-
+	System.out.println(newSentence2);
     }
 
     public static String reverseWord(String word) {
 
         StringBuilder newWord = new StringBuilder(word);
         return newWord.reverse().toString();
+    }
+
+    public static String reverseWordPrimitive(String word) {
+        char[] letters = word.toCharArray();
+        char[] newWord = new char[letters.length];
+        int j = 0;
+        for(int i = letters.length - 1; i >= 0; --i) {
+            newWord[j++] = letters[i];
+        }
+        return String.valueOf(newWord);
     }
 
     public static boolean validateInput(List<String> inputArray) {
